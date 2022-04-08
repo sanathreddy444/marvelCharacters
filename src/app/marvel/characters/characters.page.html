@@ -1,25 +1,24 @@
 <ion-header [translucent]="true">
   <ion-toolbar class="headerBackground">
     <ion-grid>
-      <ion-row style="    margin-bottom: -20px;">
-        <ion-col size=2>
-          <ion-back-button style="color:white"></ion-back-button>
+      <ion-row style="margin-bottom: -20px">
+        <ion-col size="2">
+          <ion-back-button style="color: white"></ion-back-button>
         </ion-col>
-        <ion-col size=10>
-
-          <ion-title style="color: white;
-          margin-top: 14px;
-          margin-left: -33px;">
+        <ion-col size="10">
+          <ion-title style="color: white; margin-top: 14px; margin-left: -33px">
             Marvel Characters
           </ion-title>
         </ion-col>
       </ion-row>
     </ion-grid>
 
-    <ion-searchbar style="height: 25px;
-      margin-top: 16px;
-      margin-bottom: 15px;" placeholder="Search..." [(ngModel)]="searchValue" animated="true"></ion-searchbar>
-
+    <ion-searchbar
+      style="height: 25px; margin-top: 16px; margin-bottom: 15px"
+      placeholder="Search..."
+      [(ngModel)]="searchValue"
+      animated="true"
+    ></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
@@ -28,31 +27,38 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
-
   <ion-list>
-    <ion-item *ngFor="let characters of characters | filter : searchValue" (click)="openCharacterPage(characters.id)"
-      class="animated animatedFadeInUp fadeInUp">
-
+    <ion-item
+      *ngFor="let characters of characters | filter : searchValue"
+      (click)="openCharacterPage(characters.id)"
+      class="animated animatedFadeInUp fadeInUp"
+    >
       <div slot="start">
-        <ion-img style="width: 50px;" src="{{characters.thumbnail.path+'.jpg'}}"></ion-img>
+        <ion-img
+          style="width: 50px"
+          src="{{characters.thumbnail.path+'.jpg'}}"
+        ></ion-img>
       </div>
       <ion-label class="ion-text-wrap">
         <h2>
           {{ characters.name }}
           <span class="date">
             <ion-note>{{ characters.modified | date: 'dd/MM/yyyy'}}</ion-note>
-            <ion-icon name="chevron-forward" size="small" *ngIf="isIos()"></ion-icon>
+            <ion-icon
+              name="chevron-forward"
+              size="small"
+              *ngIf="isIos()"
+            ></ion-icon>
           </span>
         </h2>
-        <!-- <p> {{characters.description}} </p> -->
       </ion-label>
     </ion-item>
-
-
-
   </ion-list>
   <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
-    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more data..."
+    >
     </ion-infinite-scroll-content>
   </ion-infinite-scroll>
 </ion-content>

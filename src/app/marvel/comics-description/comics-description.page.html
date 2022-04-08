@@ -1,34 +1,34 @@
 <ion-header [translucent]="true">
   <ion-toolbar class="headerBackground">
     <ion-buttons slot="start">
-      <ion-back-button style="color:white" defaultHref="/" (click)="getBackButtonText()"></ion-back-button>
+      <ion-back-button
+        style="color: white"
+        defaultHref="/"
+        (click)="getBackButtonText()"
+      ></ion-back-button>
     </ion-buttons>
-    <ion-title style="color:white">{{characterData.title}}</ion-title>
+    <ion-title style="color: white">{{characterData.title}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-
-
   <ion-card>
     <ion-card-header>
       <ion-card-title>{{characterData.title}}</ion-card-title>
     </ion-card-header>
-    <ion-img style="width: 80%;
-    margin-left: 10%;" src="{{characterData.thumbnail+'.jpg'}}" class="animated animatedFadeInUp fadeInUp"></ion-img>
+    <ion-img
+      style="width: 80%; margin-left: 10%"
+      src="{{characterData.thumbnail+'.jpg'}}"
+      class="animated animatedFadeInUp fadeInUp"
+    ></ion-img>
     <ion-card-content class="animated animatedFadeInUp fadeInUp">
       {{characterData.description}}
     </ion-card-content>
   </ion-card>
 
-
-
   <ion-card>
     <ion-card-header>
       <ion-card-title> Format : {{characterData.format}}</ion-card-title>
     </ion-card-header>
-
   </ion-card>
-
-
 </ion-content>
