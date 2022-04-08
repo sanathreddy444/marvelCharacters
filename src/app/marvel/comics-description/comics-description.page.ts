@@ -13,7 +13,6 @@ export class ComicsDescriptionPage implements OnInit {
     private location: Location) { }
   characterData:any;
   ngOnInit() {
-    console.log(this.service.getComicDescription())
     this.characterData = this.service.getComicDescription()
   }
   backToPage(){

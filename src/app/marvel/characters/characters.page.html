@@ -3,20 +3,20 @@
     <ion-grid>
       <ion-row style="    margin-bottom: -20px;">
         <ion-col size=2>
-            <ion-back-button style="color:white" (click)="getBackButtonText()"></ion-back-button>
+          <ion-back-button style="color:white"></ion-back-button>
         </ion-col>
         <ion-col size=10>
-  
+
           <ion-title style="color: white;
           margin-top: 14px;
           margin-left: -33px;">
-      Marvel Characters
-    </ion-title>
+            Marvel Characters
+          </ion-title>
         </ion-col>
       </ion-row>
     </ion-grid>
 
-      <ion-searchbar style="height: 25px;
+    <ion-searchbar style="height: 25px;
       margin-top: 16px;
       margin-bottom: 15px;" placeholder="Search..." [(ngModel)]="searchValue" animated="true"></ion-searchbar>
 
@@ -28,12 +28,10 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
-  
+
   <ion-list>
-    <!-- <app-message *ngFor="let characters of characters | filter : searchValue" [characters]="characters"></app-message> -->
-
-
-    <ion-item *ngFor="let characters of characters | filter : searchValue" (click)="openCharacterPage(characters.id)" class="animated animatedFadeInUp fadeInUp">
+    <ion-item *ngFor="let characters of characters | filter : searchValue" (click)="openCharacterPage(characters.id)"
+      class="animated animatedFadeInUp fadeInUp">
 
       <div slot="start">
         <ion-img style="width: 50px;" src="{{characters.thumbnail.path+'.jpg'}}"></ion-img>
@@ -54,9 +52,7 @@
 
   </ion-list>
   <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
-    <ion-infinite-scroll-content
-      loadingSpinner="bubbles"
-      loadingText="Loading more data...">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
     </ion-infinite-scroll-content>
   </ion-infinite-scroll>
 </ion-content>

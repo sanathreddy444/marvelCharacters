@@ -1,6 +1,4 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Location } from "@angular/common";
 import { SharedServiceService } from 'src/app/shared-service.service';
@@ -11,31 +9,28 @@ import { SharedServiceService } from 'src/app/shared-service.service';
   styleUrls: ['./characters-description.page.scss'],
 })
 export class CharactersDescriptionPage implements OnInit {
-  API_URL = 'https://gateway.marvel.com/v1/public/'
-  KEY = '?ts=16185334990410&apikey=f819f3621f81dde7edc382743d93d41c&hash=968c51ae154e70c54a0d0dd4fb5f405d';
+
+  API_URL = this.service.API_URL
+  KEY = this.service.KEY
+
 characterData:any;
   constructor(
-    private data: SharedServiceService,
-    private activatedRoute: ActivatedRoute,
-    private httpClient:HttpClient,
+    private service: SharedServiceService,
     private location:Location
   ) { }
 
   ngOnInit() {
-    const id = this.data.getCharacterId()
-    console.log(id)
-    
+    const id = this.service.getCharacterId()    
     this.getAllCharacter(id).subscribe(res =>{
-      console.log(res.data.results)
       this.characterData=res.data.results[0]
 
     })
   }
   getAllCharacter(id): Observable<any> {
-    return this.httpClient.get<any>(this.API_URL + 'characters/'+id + this.KEY )
+    let url = this.API_URL + 'characters/'+id + this.KEY 
+    return this.service.getApiCall(url)
   }
   backToPage(){
-    console.log("iiii")
     this.location.back();
   }
   getBackButtonText() {

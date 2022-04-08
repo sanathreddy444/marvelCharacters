@@ -5,11 +5,11 @@
 
       <ion-back-button style="color:white" [text]="getBackButtonText()" defaultHref="/"></ion-back-button>
     </ion-buttons>
-    <ion-title style="color:white">{{characterData.name}}</ion-title>
+    <ion-title *ngIf="characterData != undefined " style="color:white">{{characterData.name}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" >
+<ion-content *ngIf="characterData != undefined " [fullscreen]="true"  >
   <ion-card class="animated animatedFadeInUp fadeInUp">
     <ion-card-header>
       <ion-card-title>{{characterData.name}}</ion-card-title>
