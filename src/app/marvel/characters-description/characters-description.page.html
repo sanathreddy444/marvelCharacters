@@ -1,0 +1,51 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="headerBackground">
+
+    <ion-buttons slot="start">
+
+      <ion-back-button style="color:white" [text]="getBackButtonText()" defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title style="color:white">{{characterData.name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" >
+  <ion-card class="animated animatedFadeInUp fadeInUp">
+    <ion-card-header>
+      <ion-card-title>{{characterData.name}}</ion-card-title>
+    </ion-card-header>
+    <ion-img style="width: 80%;
+    margin-left: 10%;" src="{{characterData.thumbnail.path+'.jpg'}}"></ion-img>
+    <ion-card-content>
+      {{characterData.description}}
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button [routerLink]="['/comics-list']" class="animated animatedFadeInUp fadeInUp headerBackground">Comics
+
+    <ion-icon style="margin-left: 7px;" name="arrow-forward" end></ion-icon>
+  </ion-button>
+  <ion-card class="animated animatedFadeInUp fadeInUp">
+    <ion-card-header>
+      <ion-card-title >Series</ion-card-title>
+    </ion-card-header>
+    <ion-item *ngFor="let item of characterData.series.items" class="ion-activated">
+      <ion-label>{{item.name}}</ion-label>
+    </ion-item>
+
+
+  </ion-card>
+
+
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Stories</ion-card-title>
+    </ion-card-header>
+    <ion-item *ngFor="let item of characterData.stories.items" class="ion-activated">
+      <ion-label>{{item.name}}</ion-label>
+    </ion-item>
+
+  </ion-card>
+
+</ion-content>

@@ -11,6 +11,22 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'characters',
+    loadChildren: () => import('./marvel/characters/characters.module').then( m => m.CharactersPageModule)
+  },
+  {
+    path: 'characters-description',
+    loadChildren: () => import('./marvel/characters-description/characters-description.module').then( m => m.CharactersDescriptionPageModule)
+  },
+  {
+    path: 'comics-list',
+    loadChildren: () => import('./marvel/comics-list/comics-list.module').then( m => m.ComicsListPageModule)
+  },
+  {
+    path: 'comics-description',
+    loadChildren: () => import('./marvel/comics-description/comics-description.module').then( m => m.ComicsDescriptionPageModule)
+  },
 ];
 
 @NgModule({
