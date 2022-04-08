@@ -29,7 +29,7 @@
 
   <ion-list>
     <ion-item
-      *ngFor="let characters of characters | filter : searchValue"
+      *ngFor="let characters of characters | searchFilter : searchValue :['name']"
       (click)="openCharacterPage(characters.id)"
       class="animated animatedFadeInUp fadeInUp"
     >
@@ -41,7 +41,7 @@
       </div>
       <ion-label class="ion-text-wrap">
         <h2>
-          {{ characters.name }}
+          {{ characters.name  }}
           <span class="date">
             <ion-note>{{ characters.modified | date: 'dd/MM/yyyy'}}</ion-note>
             <ion-icon

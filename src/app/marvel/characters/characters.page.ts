@@ -17,7 +17,6 @@ export class CharactersPage implements OnInit {
   offset: number = 20
 
   constructor(private service: SharedServiceService,
-    private httpClient: HttpClient,
     private router: Router) { }
 
   ngOnInit() {

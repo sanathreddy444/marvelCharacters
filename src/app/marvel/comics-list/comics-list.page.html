@@ -23,7 +23,7 @@
   </ion-refresher>
 
   <ion-list>
-    <ion-item *ngFor="let characters of characters | filter : searchValue; let i = index"
+    <ion-item *ngFor="let characters of characters | searchFilter : searchValue :['title']; let i = index"
       (click)="openComicDescription(i)" class="animated animatedFadeInUp fadeInUp">
       <div slot="start">
         <ion-avatar>
